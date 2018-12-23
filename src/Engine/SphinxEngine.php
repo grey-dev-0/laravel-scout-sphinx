@@ -29,6 +29,8 @@ class SphinxEngine extends AbstractEngine
         $connection = new Connection();
         $connection->setParams($hosts);
         $this->connections = $connection;
+        $this->sphinx = new SphinxQL($connection);
+        $this->sphinxHelper = new Helper($connection);
     }
 
     /**
@@ -57,7 +59,7 @@ class SphinxEngine extends AbstractEngine
         $index = $example->searchableAs();
         $columns = array_keys($example->toSearchableArray());
 
-        $sphinxQuery = SphinxQL::create($this->connections)
+        $sphinxQuery = $this->sphinx
             ->replace()
             ->into($index)
             ->columns($columns);
@@ -89,7 +91,7 @@ class SphinxEngine extends AbstractEngine
         $key = $models->pluck($model->getKeyName())
             ->values()->all();
 
-        SphinxQL::create($this->connections)
+        $this->sphinx
             ->delete()
             ->from($index)
             ->where('id', 'IN', $key)
@@ -221,7 +223,7 @@ class SphinxEngine extends AbstractEngine
 
         $columns = array_keys($column_index);
 
-        $query = SphinxQL::create($this->connections)
+        $query = $this->sphinx
             ->select("*")
             ->from($index)
             ->match($columns, $builder->query);
@@ -245,7 +247,7 @@ class SphinxEngine extends AbstractEngine
             $resultset, $builder
         );
 
-        $meta = collect($query->enqueue(Helper::create($this->connections)->showMeta())->execute()->getStored());
+        $meta = collect($query->enqueue($this->sphinxHelper->showMeta())->execute()->getStored());
 
         $meta->map(function ($item, $key) use (&$result)
         {
