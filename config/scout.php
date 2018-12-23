@@ -54,11 +54,7 @@ return [
     |
      */
 
-    'algolia' => [
-        'id'     => env('ALGOLIA_APP_ID', ''),
-        'secret' => env('ALGOLIA_SECRET', ''),
-    ],
-    'sphinx'  => [
+    'sphinxsearch'  => [
         'host' => 'localhost',
         'port' => '9306',
         // 'charset' => '',

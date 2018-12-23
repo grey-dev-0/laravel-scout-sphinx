@@ -125,12 +125,13 @@ class SphinxEngine extends AbstractEngine
     /**
      * Map the given results to instances of the given model.
      *
+     * @param  \Laravel\Scout\Builder $builder
      * @param  mixed $results
      * @param  \Illuminate\Database\Eloquent\Model $model
      *
      * @return Collection
      */
-    public function map($results, $model)
+    public function map(Builder $builder, $results, $model)
     {
         return $results['results'];
     }
@@ -256,5 +257,13 @@ class SphinxEngine extends AbstractEngine
 
         return $result;
     }
-
+    /**
+     * Flush all of the model's records from the engine.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function flush($model)
+    {
+    }
 }

@@ -2,7 +2,7 @@
 
 Sphinx Search Engine for Laravel Scout.
 Forked from https://github.com/hocnt84/laravel-scout-sphinx
-**Note:** Pagination did not work with the original repo. Maybe it's due a [Query Builder](https://github.com/FoolCode/SphinxQL-Query-Builder) issue. This is the only reaso we've created this fork.
+**Note:** Pagination did not work with the original repo. Maybe it's due a [Query Builder](https://github.com/FoolCode/SphinxQL-Query-Builder) issue. This is the only reason we've created this fork.
 
 ## Prerequisites
 
