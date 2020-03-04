@@ -1,8 +1,8 @@
 # Sphinx for Laravel Scout
 
 Sphinx Search Engine for Laravel Scout.
-Forked from https://github.com/hocnt84/laravel-scout-sphinx
-**Note:** Pagination did not work with the original repo. Maybe it's due a [Query Builder](https://github.com/FoolCode/SphinxQL-Query-Builder) issue. This is the only reason we've created this fork.
+Forked from https://github.com/egwk/laravel-scout-sphinx
+**Note:** The original package version constrains prevented the installation of this package on Laravel versions that are greater than 5.5, I've changed the constrain to support up to Laravel 5.8 but, I haven't tested it yet.
 
 ## Prerequisites
 
@@ -12,7 +12,18 @@ You should have Sphinx service installed, see: http://sphinxsearch.com/
 
 ### Installing via composer
 
-Use `composer require` to install the Engine.
+To install the engine add the next lines to your `composer.json` file:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/grey-dev-0/laravel-scout-sphinx"
+    }
+]
+```
+
+Then in terminal using `composer require` command:
 
 ```
 $ composer require egwk/laravel-scout-sphinx
@@ -56,5 +67,5 @@ See [Laravel Scout Docs](https://laravel.com/docs/5.5/scout) for further info.
 
 ## Authors
 * The original Engine written by [@hocnt84](https://github.com/hocnt84/laravel-scout-sphinx)
-* Modified by [@buchin](https://github.com/buchin/laravel-scout-sphinx)
+* Modified by [@buchin](https://github.com/buchin/laravel-scout-sphinx), [@egwk](https://github.com/egwk/laravel-scout-sphinx)
 * Merged by [@perdodi](https://github.com/perdodi) / [White Könyvtár](https://white-konyvtar.hu)
